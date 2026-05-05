@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'https://multistore-pos-backend-production.up.railway.app',
         changeOrigin: true,
       }
     }
