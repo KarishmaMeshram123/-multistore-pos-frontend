@@ -1,0 +1,96 @@
+.page { padding:2rem 2.5rem; max-width:1280px; animation:fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+.header { margin-bottom:1.75rem; }
+.header h1 { font-family:var(--font-display); font-size:1.7rem; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; }
+.header p { color:var(--text-secondary); font-size:0.875rem; margin-top:0.2rem; }
+.layout { display:grid; grid-template-columns:1fr 360px; gap:1.5rem; align-items:start; }
+
+/* Search */
+.searchWrap { position:relative; margin-bottom:1rem; }
+.searchIcon { position:absolute; left:0.9rem; top:50%; transform:translateY(-50%); color:var(--text-muted); display:flex; pointer-events:none; }
+.searchInput { width:100%; background:var(--bg-card); border:1.5px solid var(--border); border-radius:var(--radius); padding:0.7rem 0.9rem 0.7rem 2.6rem; font-family:var(--font-body); font-size:0.875rem; color:var(--text-primary); outline:none; transition:border-color 0.2s, box-shadow 0.2s; box-shadow:var(--shadow); }
+.searchInput:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow); }
+.searchInput::placeholder { color:var(--text-muted); }
+
+/* Products */
+.productsGrid { display:grid; grid-template-columns:repeat(auto-fill, minmax(155px, 1fr)); gap:0.75rem; }
+.productCard { background:var(--bg-card); border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:1rem; cursor:pointer; transition:all 0.18s; animation:fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+.productCard:hover { border-color:var(--accent); transform:translateY(-2px); box-shadow:var(--shadow-lg); background:var(--accent-light); }
+.productIcon { width:40px; height:40px; border-radius:10px; background:var(--accent-light); display:flex; align-items:center; justify-content:center; color:var(--accent); margin-bottom:0.65rem; }
+.productName { font-weight:600; color:var(--text-primary); font-size:0.875rem; margin-bottom:0.2rem; }
+.productPrice { font-family:var(--font-display); font-size:1rem; font-weight:700; color:var(--accent); }
+.noProducts { color:var(--text-muted); font-size:0.875rem; padding:2rem; text-align:center; grid-column:1/-1; }
+.loading { display:flex; align-items:center; justify-content:center; height:200px; }
+.spinner { width:24px; height:24px; border:2.5px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.7s linear infinite; }
+
+/* Cart */
+.cart { background:var(--bg-card); border:1.5px solid var(--border); border-radius:var(--radius-xl); padding:1.5rem; position:sticky; top:2rem; box-shadow:var(--shadow-lg); }
+.cartTitle { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--text-primary); margin-bottom:1.25rem; display:flex; align-items:center; gap:0.5rem; }
+.cartCount { background:var(--accent); color:#fff; font-size:0.7rem; font-weight:700; border-radius:100px; padding:0.1rem 0.5rem; }
+.cartEmpty { text-align:center; padding:2rem 0; color:var(--text-muted); font-size:0.875rem; }
+.cartEmptyIcon { font-size:2rem; margin-bottom:0.5rem; opacity:0.5; }
+.cartItems { display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1rem; max-height:280px; overflow-y:auto; }
+.cartItem { display:flex; align-items:center; gap:0.5rem; padding:0.65rem 0.75rem; border-radius:var(--radius); background:var(--bg-elevated); border:1px solid var(--border); }
+.cartItemName { flex:1; font-size:0.82rem; font-weight:500; color:var(--text-primary); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.qtyControls { display:flex; align-items:center; gap:0.3rem; }
+.qtyBtn { width:22px; height:22px; border-radius:5px; border:1px solid var(--border); background:var(--bg-card); cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--text-secondary); transition:all 0.15s; font-size:0.7rem; }
+.qtyBtn:hover { border-color:var(--accent); color:var(--accent); }
+.qty { font-family:var(--font-display); font-size:0.8rem; font-weight:700; color:var(--text-primary); min-width:18px; text-align:center; }
+.cartItemPrice { font-size:0.78rem; font-weight:600; color:var(--accent); white-space:nowrap; }
+.removeBtn { width:22px; height:22px; border-radius:5px; border:none; background:transparent; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center; transition:color 0.15s; padding:0; }
+.removeBtn:hover { color:var(--red); }
+.divider { height:1px; background:var(--border); margin:0.75rem 0; }
+.totalRow { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; }
+.totalLabel { font-size:0.875rem; color:var(--text-secondary); font-weight:500; }
+.totalValue { font-family:var(--font-display); font-size:1.4rem; font-weight:800; color:var(--text-primary); }
+.placeBtn { width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius); font-family:var(--font-display); font-size:0.95rem; font-weight:700; padding:0.875rem; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:0.5rem; }
+.placeBtn:hover:not(:disabled) { background:var(--accent-dim); transform:translateY(-1px); box-shadow:0 6px 20px var(--accent-glow); }
+.placeBtn:disabled { opacity:0.65; cursor:not-allowed; }
+.errorBox { background:var(--red-dim); border:1px solid rgba(220,38,38,0.2); color:var(--red); padding:0.65rem 0.9rem; border-radius:var(--radius); font-size:0.82rem; margin-top:0.75rem; }
+
+/* ── PAYMENT MODAL ── */
+.overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:200; padding:1rem; animation:fadeIn 0.2s; }
+.payModal { background:var(--bg-card); border:1.5px solid var(--border); border-radius:var(--radius-xl); padding:2rem; width:100%; max-width:460px; box-shadow:var(--shadow-xl); animation:scaleIn 0.28s cubic-bezier(0.22,1,0.36,1); }
+.payModalHeader { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:1.25rem; }
+.payModalTitle { font-family:var(--font-display); font-size:1.2rem; font-weight:700; color:var(--text-primary); margin-bottom:0.2rem; }
+.payModalSub { font-size:0.82rem; color:var(--text-secondary); }
+.closeBtn { width:30px; height:30px; border-radius:8px; border:1px solid var(--border); background:var(--bg-elevated); cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--text-muted); transition:all 0.18s; flex-shrink:0; }
+.closeBtn:hover { border-color:var(--red); color:var(--red); background:var(--red-dim); }
+
+.payAmountBanner { background:var(--accent-light); border:1.5px solid var(--accent-glow); border-radius:var(--radius-lg); padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; }
+.payAmountLabel { font-size:0.8rem; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+.payAmountValue { font-family:var(--font-display); font-size:1.6rem; font-weight:800; color:var(--accent); letter-spacing:-0.02em; }
+
+.payMethods { display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.5rem; }
+.payMethodBtn { display:flex; align-items:center; gap:1rem; padding:1rem 1.1rem; border-radius:var(--radius-lg); border:1.5px solid var(--border); background:var(--bg-elevated); cursor:pointer; transition:all 0.18s; text-align:left; width:100%; }
+.payMethodBtn:hover { border-color:var(--accent); background:var(--accent-light); }
+.payMethodSelected { border-color:var(--accent) !important; background:var(--accent-light) !important; box-shadow:0 0 0 3px var(--accent-glow); }
+.payMethodIcon { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.payMethodInfo { flex:1; }
+.payMethodName { display:block; font-family:var(--font-display); font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:0.2rem; }
+.payMethodDesc { display:block; font-size:0.75rem; color:var(--text-secondary); }
+.rzpBadgePill { background:#2563eb14; color:#2563eb; font-size:0.65rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:0.2rem 0.55rem; border-radius:6px; white-space:nowrap; flex-shrink:0; }
+.payRadio { width:20px; height:20px; border-radius:50%; border:2px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:border-color 0.2s; }
+.payMethodSelected .payRadio { border-color:var(--accent); }
+.payRadioInner { width:10px; height:10px; border-radius:50%; background:var(--accent); }
+
+.payError { background:var(--red-dim); border:1px solid rgba(220,38,38,0.2); color:var(--red); padding:0.65rem 0.9rem; border-radius:var(--radius); font-size:0.82rem; margin-bottom:1rem; }
+
+.confirmPayBtn { width:100%; background:var(--accent); color:#fff; border:none; border-radius:var(--radius-lg); font-family:var(--font-display); font-size:1rem; font-weight:700; padding:0.95rem; cursor:pointer; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:0.5rem; letter-spacing:0.01em; }
+.confirmPayBtn:hover:not(:disabled) { background:var(--accent-dim); transform:translateY(-1px); box-shadow:0 6px 20px var(--accent-glow); }
+.confirmPayBtn:disabled { opacity:0.5; cursor:not-allowed; }
+
+/* ── SUCCESS PAGE ── */
+.successPage { padding:2rem 2.5rem; display:flex; align-items:center; justify-content:center; min-height:80vh; }
+.successCard { background:var(--bg-card); border:1.5px solid var(--border); border-radius:var(--radius-xl); padding:3rem 2.5rem; text-align:center; max-width:440px; width:100%; box-shadow:var(--shadow-xl); animation:scaleIn 0.35s cubic-bezier(0.22,1,0.36,1); }
+.successIconWrap { width:80px; height:80px; border-radius:50%; background:var(--green-dim); display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem; }
+.successIcon { color:var(--green); }
+.successTitle { font-family:var(--font-display); font-size:1.5rem; font-weight:800; color:var(--text-primary); margin-bottom:0.5rem; }
+.successSub { color:var(--text-secondary); font-size:0.875rem; margin-bottom:1.75rem; line-height:1.6; }
+.successDetails { background:var(--bg-elevated); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1rem 1.25rem; margin-bottom:1.75rem; text-align:left; display:flex; flex-direction:column; gap:0.6rem; }
+.successRow { display:flex; justify-content:space-between; align-items:center; font-size:0.875rem; }
+.successRowLabel { color:var(--text-secondary); }
+.successRowValue { font-weight:600; color:var(--text-primary); }
+.cashBadge { background:var(--green-dim); color:var(--green); padding:0.2rem 0.65rem; border-radius:6px; font-size:0.78rem; }
+.rzpBadge { background:var(--blue-dim); color:var(--blue); padding:0.2rem 0.65rem; border-radius:6px; font-size:0.78rem; }
+.newBillBtn { background:var(--accent); color:#fff; border:none; border-radius:var(--radius-lg); font-family:var(--font-display); font-size:0.95rem; font-weight:700; padding:0.85rem 2.5rem; cursor:pointer; transition:all 0.2s; }
+.newBillBtn:hover { background:var(--accent-dim); transform:translateY(-1px); box-shadow:0 4px 14px var(--accent-glow); }
