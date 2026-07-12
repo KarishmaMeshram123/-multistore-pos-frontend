@@ -1,4 +1,4 @@
-# NEXUS POS — Frontend
+# Multistore Sync POS  — Frontend
 
 Multi-Tenant SaaS POS System Frontend built with **React + Vite**.
 
